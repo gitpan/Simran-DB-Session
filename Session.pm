@@ -1,8 +1,8 @@
 ##################################################################################################################
 # 
-# Source  : $Source: /home/simran/cvs/cpan/Simran/DB/Session.pm,v $
-# Revision: $Revision: 1.2 $ 
-# Date    : $Date: 2000/04/26 04:28:08 $
+# Source  : $Source: /home/simran/cvs/misc/cpan/Simran/DB/Session.pm,v $
+# Revision: $Revision: 1.3 $ 
+# Date    : $Date: 2001/06/04 17:53:05 $
 # Author  : $Author: simran $
 #
 ##################################################################################################################
@@ -14,7 +14,7 @@ use DBI;
 use Carp;
 use Simran::Error::Error;
 
-($Simran::DB::Session::VERSION = '$Revision: 1.2 $') =~ s/[^\d\.]//g;
+($Simran::DB::Session::VERSION = '$Revision: 1.3 $') =~ s/[^\d\.]//g;
 my $error = new Simran::Error::Error({CARP => 1});
 
 1;
@@ -384,7 +384,7 @@ __END__
 
 =head1 NAME 
 
-DB_session.pm - Database Session
+Session.pm - Database Session
 
 ##################################################################################################################
 
@@ -402,9 +402,9 @@ Please see DESCRIPTION.
 
 =head1 REVISION
 
-$Revision: 1.2 $
+$Revision: 1.3 $
 
-$Date: 2000/04/26 04:28:08 $
+$Date: 2001/06/04 17:53:05 $
 
 ##################################################################################################################
 
@@ -450,19 +450,19 @@ DATABASE_HANDLE: the database handle when the connection is made (used to perfor
 
 =item Description
 
-This is the create method for the DB_session class. The new method can be
+This is the create method for the Simran::DB::Session class. The new method can be
 called with parameters, if it is, they ar passed to the set method (see
 below).
 
-        $session = DB_session->new
+        $session = Simran::DB::Session->new
 
         or
 
-        $session = DB_session->new($parameters)
+        $session = Simran::DB::Session->new($parameters)
 
 eg.
 
-        $session = DB_session->new("PROTOCOL=mysql;DATABASE=test;HOST=localhost;PORT=3306");
+        $session = Simran::DB::Session->new("PROTOCOL=mysql;DATABASE=test;HOST=localhost;PORT=3306");
 
 =item Input
 
@@ -470,11 +470,11 @@ eg.
 
 =item Output
 
-        New DB_session object created.
+        New Simran::DB::Session object created.
 
 =item Return Value
 
-        New DB_session object.
+        New Simran::DB::Session object.
 
 =back
 
@@ -538,7 +538,7 @@ DATABASE or database) would work equally well.
 =item Description
 
 This internal method builds the DSN property (needed for the connection). There
-should be no need to call this manually as the DB_session object should
+should be no need to call this manually as the Simran::DB::Session object should
 invoke this method interanlly whenever it needs to connect to the DB
 
 A DSN looks like "DBI:<protocol>:database=<dbname>;host=<hostname>;
@@ -608,7 +608,7 @@ necessary.
 =item Description
 
 This method disconnects the database handle using the DBI disconnect method.
-This can be called explicity, but will be called when the DB_session object
+This can be called explicity, but will be called when the Simran::DB::Session object
 is destroyed. ie. when the object is removed or deleted.
 
         $session->disconnect
@@ -877,8 +877,8 @@ thus far. Else, returns the latest error message if set.
 
 =item Description
 
-The automatic destructor method for DB_session. Called automatically when
-a DB_session is destroyed.
+The automatic destructor method for Simran::DB::Session. Called automatically when
+a Simran::DB::Session is destroyed.
 
 =item Syntax
 
@@ -900,7 +900,5 @@ a DB_session is destroyed.
 
 
 =cut
-
-
 
 
